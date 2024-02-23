@@ -4,46 +4,48 @@ let contacts = [
   {
     id: v4(),
     name: 'Victor',
-    email: 'torugoestudos@gmail.com',
-    phone: '2196926154',
+    email: 'victor@hugo.com',
+    phone: '21969261542',
     category_id: v4(),
-
   },
   {
     id: v4(),
-    name: 'Rhaysa',
-    email: 'rhaysa@gmail.com',
-    phone: '2196926154',
-    category_id: v4(),
-
-  },
-];
+    name: 'Hugo',
+    email: 'aaaa@bbbb.com',
+    phone: '21966663030',
+    category_id: v4()
+  }
+]
 
 class ContactsRepository {
   findAll() {
-    return new Promise((resolve) => {
+    return new Promise((resolve) =>{
       resolve(contacts)
     })
   }
 
   findById(id) {
-    return new Promise((resolve) => resolve(contacts.find((contact) => contact.id === id)
-    ))
+    return new Promise((resolve) => resolve(
+      contacts.find((contact) => contact.id === id)
+    ));
   }
 
   findByEmail(email) {
-    return new Promise((resolve) => resolve(contacts.find((contact) => contact.email === email)
-    ))
+    return new Promise((resolve) => resolve(
+      contacts.find((contact) => contact.email === email)
+    ));
   }
 
-  delete(id) {
+  delete(id){
     return new Promise((resolve) => {
-      contacts = contacts.filter((contact) => contact.id !== id)
+      contacts = contacts.filter((contact) => contact.id !== id);
       resolve();
     })
   }
 
-  create({ name, email, phone, category_id }) {
+  create({
+    name, email, phone, category_id
+  }){
     return new Promise((resolve) => {
       const newContact = {
         id: v4(),
@@ -52,6 +54,7 @@ class ContactsRepository {
         phone,
         category_id,
       }
+
       contacts.push(newContact)
       resolve(newContact);
     })
@@ -59,7 +62,7 @@ class ContactsRepository {
 
   update(id, {
     name, email, phone, category_id
-  }) {
+  }){
     return new Promise((resolve) => {
       const updatedContact = {
         id,
@@ -71,13 +74,12 @@ class ContactsRepository {
 
       contacts = contacts.map((contact) => (
         contact.id === id ? updatedContact : contact
-      ));
+      ))
 
-      resolve(updatedContact)
+    resolve(updatedContact);
     })
+
   }
-
-
-}
+};
 
 module.exports = new ContactsRepository();
