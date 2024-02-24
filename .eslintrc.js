@@ -24,8 +24,9 @@ module.exports = {
   rules: {
     'no-console': 'off',
     'class-methods-use-this': 'off',
-    'import/no-extraneous-dependencies': '[error, { devDependencies: true }]',
+    'import/no-extraneous-dependencies': '[error, { devDependencies: 1 }]',
     'consistent-return': 'off',
     camelcase: 'off',
+    'no-unused-vars' : ['error', {arsIgnorePattern: 'next'}],
   },
 };
